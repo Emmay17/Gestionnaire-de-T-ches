@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GesTaches</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            Gestionnaire des tâches
+        </h1>
+    </header>
+    <main class="main-index">
+        <section class="main-index__left-menu">
+            <h2 class="main-index__left-menu__h2">
+                Menu
+            </h2>
+
+            <ul class="main-index__left-menu__ul">
+                <li><img src="/assets/list_icon.svg" alt="icon tache"> <p>Mes Tâches</p></li>
+                <li><img src="/assets/add.svg" alt="icon plus"> <p>Ajouter Tâches</p></li>
+                <li><img src="/assets/setting.svg" alt="icon paramettre"> <p>Parametres</p></li>
+            </ul>
+        </section>
+
+        <section class="main-index__right-interface">
+
+            <div class="main-index__right-interface__search-zone">
+                <input class="main-index__right-interface__search-zone__input" type="search" name="search" id="search-input" placeholder="Rechercher par nom de tache">
+                <button class="main-index__right-interface__search-zone__button"><img src="/assets/search.svg" alt="button search"></button>
+            </div>
+
+            <div class="main-index__right-interface__ajout-tache">
+                    <p class="main-index__right-interface__ajout-tache__title">Ajout de tâche</p>
+                    
+                    <div class="main-index__right-interface__ajout-tache__container">
+                        <p>Nom</p>
+                        <input type="text" placeholder="Nom tâche">
+
+                        <p>Date Echeance</p>
+                        <input type="date" name="" id="">
+
+                        <p>Priorité</p>
+                        <select name="" id="">
+                            <option value="" disabled selected>Choisissez une option...</option>
+                            <option value="faible">faible</option>
+                            <option value="moyen">moyen</option>
+                            <option value="haut">haut</option>
+                        </select>
+
+                        <button> Ajouter</button>
+                    </div>
+            </div>
+
+            <div class="main-index__right-interfac__filtre">
+                <h3 class="main-index__right-interfac__filtre__h3">
+                    filtre
+                </h3>
+
+                <ul class="main-index__right-interfac__filtre__ul">
+                    <li><button type="button">Priority</button></li>
+                    <li><button type="button">Status</button></li>
+                    <li>
+                        <p>Par Date</p>
+                        <input type="date" name="Date"  id="">
+                    </li>
+                </ul>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Priority</th>
+                        <th>Nam</th>
+                        <th>DeadLine</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>F</td>
+                        <td>Aller au marcher</td>
+                        <td>30/11/2024</td>
+                        <td></td>
+                        <td>
+                            <ul>
+                                <li><button><img src="/assets/delete.svg" alt="delete button"></button></li>
+                                <li><button><img src="/assets/edit.svg" alt="edit button"></button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="/javascript/script.js"></script>
+</body>
+</html>

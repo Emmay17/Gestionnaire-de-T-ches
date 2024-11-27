@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root{
+    --blue_background : #e6f6ff;
+    --blue_button : #80d0ff;
+    --red_one : #e50194;
+    --yellow_one : #fbbc05;
+    --blue_one : #4285f4;
+    --green_validate : #34a853;
+    --gray_pending : #949597;
+    /* --gray_icons : #; */
+}
