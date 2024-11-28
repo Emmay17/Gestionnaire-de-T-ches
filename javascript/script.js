@@ -11,3 +11,29 @@ let taches = [
     {id: 10, nom: "Préparer le dîner", dateEcheance: "23/11/2024", priorite: "F", status: true}
 ];
 
+function afficher_taches(){
+    let tableau = document.getElementById("tbody_donne");
+    taches.forEach((tache) => {
+            console.log({tache});
+            
+            let tr = document.createElement("tr");
+            tr.innerHTML = `<tr data-id="${tache.id}">
+                                <td class="table__tbody__td-priority"><p>${tache.priorite}</p></td>
+                                <td>${tache.nom}</td>
+                                <td>${tache.dateEcheance}</td>
+                                <td class="table__tbody__td-status"><p>${tache.status ? "Completed" : "Pending..."}</p></td>
+                                <td class="table__tbody__td-actions">
+                                    <ul>
+                                        <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                                        <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                                    </ul>
+                                </td>
+                            </tr>`
+        tableau.appendChild(tr);
+    
+        })
+    }
+    
+    
+    
+    afficher_taches();
