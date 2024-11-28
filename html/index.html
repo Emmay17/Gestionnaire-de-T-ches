@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>
-            Gestionnaire des tâches
+            GESTÂCHES
         </h1>
     </header>
     <main class="main-index">
@@ -36,19 +36,25 @@
                     <p class="main-index__right-interface__ajout-tache__title">Ajout de tâche</p>
                     
                     <div class="main-index__right-interface__ajout-tache__container">
-                        <p>Nom</p>
-                        <input type="text" placeholder="Nom tâche">
+                        <div>
+                            <p>Nom</p>
+                            <input type="text" placeholder="Nom tâche">
+                        </div>
 
-                        <p>Date Echeance</p>
-                        <input type="date" name="" id="">
+                        <div>
+                            <p>Date Echeance</p>
+                            <input type="date" name="" id="">
+                        </div>
 
-                        <p>Priorité</p>
-                        <select name="" id="">
-                            <option value="" disabled selected>Choisissez une option...</option>
-                            <option value="faible">faible</option>
-                            <option value="moyen">moyen</option>
-                            <option value="haut">haut</option>
-                        </select>
+                        <div>
+                            <p>Priorité</p>
+                            <select name="" id="">
+                                <option value="" disabled selected>Choisissez une option...</option>
+                                <option value="faible">Faible</option>
+                                <option value="moyen">Moyen</option>
+                                <option value="haut">Haut</option>
+                            </select>
+                        </div>
 
                         <button> Ajouter</button>
                     </div>
@@ -63,7 +69,6 @@
                     <li><button type="button">Priority</button></li>
                     <li><button type="button">Status</button></li>
                     <li>
-                        <p>Par Date</p>
                         <input type="date" name="Date"  id="">
                     </li>
                 </ul>
@@ -72,26 +77,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Priority</th>
+                        <th class="Priority">Priority</th>
                         <th>Nam</th>
-                        <th>DeadLine</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th class="deadline">DeadLine</th>
+                        <th class="Status">Status</th>
+                        <th class="Actions">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>F</td>
-                        <td>Aller au marcher</td>
-                        <td>30/11/2024</td>
-                        <td></td>
-                        <td>
-                            <ul>
-                                <li><button><img src="/assets/delete.svg" alt="delete button"></button></li>
-                                <li><button><img src="/assets/edit.svg" alt="edit button"></button></li>
-                            </ul>
-                        </td>
-                    </tr>
+                <tbody id="tbody_donne">
+                    
                 </tbody>
             </table>
         </section>
