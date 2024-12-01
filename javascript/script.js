@@ -12,18 +12,18 @@ let taches = [
 ];
 let tableau = document.getElementById("tbody_donne");
 
-function afficher_taches(){
-    let selectDate = document.getElementById("selectDeadline");
-    let status = document.getElementById("selectStatus");
-    status.addEventListener("change", function(state){
+let selectDate = document.getElementById("selectDeadline");
+
+    let stat = document.getElementById("selectStatus");
+    stat.addEventListener("change", function(state){
         let selectedState = state.target.value;
         // appel a ma fonction d'affichage d'evenemnt en fonction de la date selectionner
         affichageParStatus(selectedState);
     });
-    status.innerHTML = `
+    stat.innerHTML = `
         <option value="Status" selected>Status</option>
         <option value="Completed" >Completed</option>
-        <option value="Pending" >Pendind...</option>
+        <option value="Pending" >Pendind...</option> 
     `
 
     selectDate.addEventListener("change", function(date){
@@ -33,12 +33,26 @@ function afficher_taches(){
     });
 
     selectDate.innerHTML = `<option value="Deadline" selected>Deadline</option>`;  
-    taches.forEach((tache) => {
-        let option = document.createElement('option');
-        option.value = tache.dateEcheance;
-        option.textContent = tache.dateEcheance;
-        selectDate.appendChild(option);
+        taches.forEach((tache) => {
+            let option = document.createElement('option');
+            option.value = tache.dateEcheance;
+            option.textContent = tache.dateEcheance;
+            selectDate.appendChild(option);
+        });
+
+    let selectPriority = document.getElementById("selectPriority");
+        selectPriority.innerHTML = `
+                                    <option value="Priorite" selected>Priorite</option>
+                                    <option value="F">Faible</option>
+                                    <option value="M">Moyen</option>
+                                    <option value="H">Haut</option>
+        `
+    selectPriority.addEventListener("change", function(p){
+        let selectedPriority = p.target.value;
+
+        affichageParPorprite(selectedPriority);
     });
+function afficher_taches(){
     taches.forEach((tache) => {
             let tr = document.createElement("tr");
             let valeur_p = "";
@@ -49,9 +63,6 @@ function afficher_taches(){
             } else if (tache.priorite == "H") {
                 valeur_p = "table__tbody__td-priority-H";
             }
-
-            
-
             if(tache.status == true ){
                 tr.innerHTML = `<tr data-id="${tache.id}">
                                 <td ><p>${tache.id}</p></td>
@@ -81,9 +92,7 @@ function afficher_taches(){
                                 </td>
                             </tr>`
             }
-            
         tableau.appendChild(tr);
-    
     })
 }
 
@@ -142,6 +151,49 @@ function affichageParStatus(status){
     }
     taches.forEach((tache) => {
         if (statusActuel === tache.status) {
+            let tr = document.createElement("tr");
+            tr.setAttribute("data-id", tache.id);
+
+            let valeur_p = "";
+            if (tache.priorite === "F") {
+                valeur_p = "table__tbody__td-priority-F";
+            } else if (tache.priorite === "M") {
+                valeur_p = "table__tbody__td-priority-M";
+            } else if (tache.priorite === "H") {
+                valeur_p = "table__tbody__td-priority-H";
+            }
+
+            
+            tr.innerHTML = `
+                <td><p>${tache.id}</p></td>
+                <td class="${valeur_p}"><p>${tache.priorite}</p></td>
+                <td>${tache.nom}</td>
+                <td>${tache.dateEcheance}</td>
+                <td class="${tache.status ? 'table__tbody__td-status-completed' : 'table__tbody__td-status-pending'}">
+                    <p>${tache.status ? 'completed' : 'pending...'}</p>
+                </td>
+                <td class="table__tbody__td-actions">
+                    <ul>
+                        <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                        <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                    </ul>
+                </td>
+            `;
+            
+            tableau.appendChild(tr);
+        }
+    });
+}
+
+function affichageParPorprite(priority){
+    tableau.innerHTML = ``;  
+    if (priority === "Priorite") {
+        afficher_taches();
+        return; // Sortir de la fonction 
+    }
+
+    taches.forEach((tache) => {
+        if (priority === tache.priorite) {
             let tr = document.createElement("tr");
             tr.setAttribute("data-id", tache.id);
 
