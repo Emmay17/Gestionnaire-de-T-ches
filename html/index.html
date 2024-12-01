@@ -7,21 +7,29 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
+    <header class="header">
+
+        <button id="menu-toggle" class="menu-toggle">☰</button>
         <h1>
             GESTÂCHES
         </h1>
     </header>
     <main class="main-index">
-        <section class="main-index__left-menu">
+        <section class="main-index__left-menu" id="left-menu">
             <h2 class="main-index__left-menu__h2">
                 Menu
             </h2>
 
             <ul class="main-index__left-menu__ul">
                 <li><img src="/assets/list_icon.svg" alt="icon tache"> <p>Mes Tâches</p></li>
-                <li><img src="/assets/add.svg" alt="icon plus"> <p>Ajouter Tâches</p></li>
+                <li><img src="/assets/add.svg" alt="icon plus"> <p>Ajouter</p></li>
                 <li><img src="/assets/setting.svg" alt="icon paramettre"> <p>Parametres</p></li>
+            </ul>
+
+            <p>Statistique</p>
+            <ul class="main-index__left-menu__statistique">
+                <li id="affichage_tache_retard"> </li>
+                <li>Tâches en attente : </li>
             </ul>
         </section>
 
@@ -39,17 +47,17 @@
                         <div class="main-index__right-interface__ajout-tache__container">
                             <div>
                                 <p>Nom</p>
-                                <input type="text" placeholder="Nom tâche">
+                                <input required type="text" id="nomDeTache" placeholder="Nom tâche">
                             </div>
     
                             <div>
                                 <p>Date Echeance</p>
-                                <input type="date" name="" id="">
+                                <input required type="date" name="" id="dateInput">
                             </div>
     
                             <div>
                                 <p>Priorité</p>
-                                <select name="" id="">
+                                <select name="" id="prioriteDeTache" required>
                                     <option value="" disabled selected>Choisissez une option...</option>
                                     <option value="faible">Faible</option>
                                     <option value="moyen">Moyen</option>
@@ -62,7 +70,7 @@
                     </form>
             </div>
 
-            <div class="main-index__right-interfac__filtre">
+            <!-- <div class="main-index__right-interfac__filtre">
                 <h3 class="main-index__right-interfac__filtre__h3">
                     filtre
                 </h3>
@@ -74,7 +82,7 @@
                         <input type="date" name="Date"  id="">
                     </li>
                 </ul>
-            </div>
+            </div> -->
             
             <table>
                 <thead>
@@ -88,7 +96,7 @@
                                 <option value="H">Haut</option> -->
                             </select>
                         </th>
-                        <th>Nam</th>
+                        <th>Name</th>
                         <th class="deadline">
                             <select name="" id="selectDeadline">
                             </select>

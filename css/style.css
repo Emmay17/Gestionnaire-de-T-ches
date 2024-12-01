@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -19,15 +19,47 @@
 }
 
 header{
+    display: flex;
     padding: 1rem;
+    justify-content: center;
     text-align: center;
     background: var(--blue_one);
     color: var(--blue_background);
+}
+header h1{
+    width: fit-content;
+    flex-grow: 1; /* Permet au h1 de prendre l'espace restant */
+  text-align: center; /* Centrer le texte du h1 */
+  margin: 0;
 }
 
 header h1:hover{
     color: white;
     cursor: pointer;
+}
+
+.tacheRetardAffichage{
+    display: flex;
+    background: var(--red_one);
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.main-index__left-menu__statistique{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1rem;
+}
+
+.main-index__left-menu__statistique li{
+    font-size: 14px;
+    background: var(--red_one);
+    font-weight: 400;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: white;
 }
 
 .main-index{
@@ -38,13 +70,23 @@ header h1:hover{
 
 .main-index__left-menu{
     background: var(--blue_background);
-    padding: 5rem;
-    display: none;
+    position: fixed; /* Utilise fixed pour que le menu soit positionné par rapport à la fenêtre */
+    left: -250px; 
+    top: 0; /* Colle le menu en haut de la fenêtre */
+    padding: 2rem;
+    display: flex;
     flex-direction: column;
+    font-size: 14px;
     gap: 2rem;
+    transition: left 0.3s ease; /* Transition douce sur la position */
+    z-index: 1000; /* Assure que le menu soit devant le contenu principal */
     text-align: left;
+    height: 70%; 
 }
 
+.main-index__left-menu.open {
+    left: 0; /* Déplace le menu à sa position visible */
+}
 .main-index__left-menu__ul{
     display: flex;
     flex-direction: column;
@@ -54,6 +96,7 @@ header h1:hover{
 
 .main-index__left-menu__ul li {
     display: flex;
+    width: 10rem;
     gap: 1rem;
     background-color: var(--blue_one);
     padding: 0.5rem;
@@ -187,15 +230,18 @@ thead tr th{
     padding: 0.5rem;
     color: white;
     font-size: 14px;
+
 }
 
 thead{
     background: var(--blue_one);
+    font-size: 14px;
 }
 
 tbody tr{
     /* background: var(--blue_background); */
     border-bottom: 100px solid var(--gray_pending);
+    font-size: 14px;
 }
 tbody tr td{
     padding: 0.5rem;
@@ -324,3 +370,4 @@ tbody tr td ul li button{
     border-radius: 50%;
     font-weight: 600;
 }
+
