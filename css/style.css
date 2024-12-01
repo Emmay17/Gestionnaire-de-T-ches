@@ -8,10 +8,13 @@
 :root{
     --blue_background : #e6f6ff;
     --blue_button : #80d0ff;
-    --red_one : #e50194;
+    --red_one : #C62828;
+    --powderRed: #FFCDD2;
     --yellow_one : #fbbc05;
+    --powderYellow : #FFF394;
     --blue_one : #4285f4;
     --green_validate : #34a853;
+    --powderGreen : #cefad0;
     --gray_pending : #949597;
 }
 
@@ -238,10 +241,18 @@ tbody tr td ul li button{
     /* width: 50%; */
 
 }
-.table__tbody__td-status p{
+.table__tbody__td-status-pendind p{
     background: gainsboro;
     text-align: center;
     color: var(--gray_pending);
+    padding: 0.2rem;
+    border-radius: 1rem;
+}
+
+.table__tbody__td-status-completed p{
+    background: var(--powderGreen);
+    text-align: center;
+    color: var(--green_validate);
     padding: 0.2rem;
     border-radius: 1rem;
 }
@@ -272,12 +283,40 @@ tbody tr td ul li button{
 .Status{
     width: 15rem;
 }
-.table__tbody__td-priority p{
+.table__tbody__td-priority-F{
     width: 0.1rem;
     height: 0.1rem;
     text-align: center;
-    background: var(--blue_one);
-    color: white;
+    background: var(--blue_background);
+    color: var(--blue_one);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.table__tbody__td-priority-M{
+    width: 0.1rem;
+    height: 0.1rem;
+    text-align: center;
+    background: var(--powderYellow);
+    color: var(--yellow_one);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.table__tbody__td-priority-H{
+    width: 0.1rem;
+    height: 0.1rem;
+    text-align: center;
+    background: var(--powderRed);
+    color: var(--red_one);
     padding: 20px;
     display: flex;
     justify-content: center;

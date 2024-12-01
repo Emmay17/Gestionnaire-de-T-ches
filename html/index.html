@@ -35,29 +35,31 @@
             <div class="main-index__right-interface__ajout-tache">
                     <p class="main-index__right-interface__ajout-tache__title">Ajout de tâche</p>
                     
-                    <div class="main-index__right-interface__ajout-tache__container">
-                        <div>
-                            <p>Nom</p>
-                            <input type="text" placeholder="Nom tâche">
+                    <form id="ajout-formulaire">
+                        <div class="main-index__right-interface__ajout-tache__container">
+                            <div>
+                                <p>Nom</p>
+                                <input type="text" placeholder="Nom tâche">
+                            </div>
+    
+                            <div>
+                                <p>Date Echeance</p>
+                                <input type="date" name="" id="">
+                            </div>
+    
+                            <div>
+                                <p>Priorité</p>
+                                <select name="" id="">
+                                    <option value="" disabled selected>Choisissez une option...</option>
+                                    <option value="faible">Faible</option>
+                                    <option value="moyen">Moyen</option>
+                                    <option value="haut">Haut</option>
+                                </select>
+                            </div>
+    
+                            <button type="submit"> Ajouter</button>
                         </div>
-
-                        <div>
-                            <p>Date Echeance</p>
-                            <input type="date" name="" id="">
-                        </div>
-
-                        <div>
-                            <p>Priorité</p>
-                            <select name="" id="">
-                                <option value="" disabled selected>Choisissez une option...</option>
-                                <option value="faible">Faible</option>
-                                <option value="moyen">Moyen</option>
-                                <option value="haut">Haut</option>
-                            </select>
-                        </div>
-
-                        <button> Ajouter</button>
-                    </div>
+                    </form>
             </div>
 
             <div class="main-index__right-interfac__filtre">
@@ -77,10 +79,27 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="Priority">Priority</th>
+                        <th>ID</th>
+                        <th class="Priority">
+                            <select name="" id="selectPriority">
+                                <option value="" selected>Priorite</option>
+                                <option value="faible">Faible</option>
+                                <option value="moyen">Moyen</option>
+                                <option value="haut">Haut</option>
+                            </select>
+                        </th>
                         <th>Nam</th>
-                        <th class="deadline">DeadLine</th>
-                        <th class="Status">Status</th>
+                        <th class="deadline">
+                            <select name="" id="selectDeadline">
+                            </select>
+                        </th>
+                        <th class="Status">
+                            <select name="" id="selectStatus">
+                                <option value="" selected>Status</option>
+                                <option value="faible">Completed</option>
+                                <option value="moyen">Pending</option>
+                            </select>
+                        </th>
                         <th class="Actions">Actions</th>
                     </tr>
                 </thead>
