@@ -241,7 +241,7 @@ tbody tr td ul li button{
     /* width: 50%; */
 
 }
-.table__tbody__td-status-pendind p{
+.table__tbody__td-status-pending p{
     background: gainsboro;
     text-align: center;
     color: var(--gray_pending);

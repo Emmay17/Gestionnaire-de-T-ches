@@ -14,13 +14,24 @@ let tableau = document.getElementById("tbody_donne");
 
 function afficher_taches(){
     let selectDate = document.getElementById("selectDeadline");
-    
+    let status = document.getElementById("selectStatus");
+    status.addEventListener("change", function(state){
+        let selectedState = state.target.value;
+        // appel a ma fonction d'affichage d'evenemnt en fonction de la date selectionner
+        affichageParStatus(selectedState);
+    });
+    status.innerHTML = `
+        <option value="Status" selected>Status</option>
+        <option value="Completed" >Completed</option>
+        <option value="Pending" >Pendind...</option>
+    `
+
     selectDate.addEventListener("change", function(date){
         let selectedDate = date.target.value;
-
         // appel a ma fonction d'affichage d'evenemnt en fonction de la date selectionner
         affichageParDate(selectedDate);
     });
+
     selectDate.innerHTML = `<option value="Deadline" selected>Deadline</option>`;  
     taches.forEach((tache) => {
         let option = document.createElement('option');
@@ -61,7 +72,7 @@ function afficher_taches(){
                                 <td class="${valeur_p}"><p>${tache.priorite}</p></td>
                                 <td>${tache.nom}</td>
                                 <td>${tache.dateEcheance}</td>
-                                <td class="table__tbody__td-status-pendind"><p>pending...</p></td>
+                                <td class="table__tbody__td-status-pending"><p>pending...</p></td>
                                 <td class="table__tbody__td-actions">
                                     <ul>
                                         <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
@@ -113,13 +124,57 @@ function affichageParDate(date) {
                     </ul>
                 </td>
             `;
-
             
             tableau.appendChild(tr);
         }
     });
 }
 
+function affichageParStatus(status){
+    tableau.innerHTML = ``;  
+    if (status === "Status") {
+        afficher_taches();
+        return; // Sortir de la fonction 
+    }
+    let statusActuel = false ;
+    if (status === "Completed"){
+        statusActuel = true ;
+    }
+    taches.forEach((tache) => {
+        if (statusActuel === tache.status) {
+            let tr = document.createElement("tr");
+            tr.setAttribute("data-id", tache.id);
+
+            let valeur_p = "";
+            if (tache.priorite === "F") {
+                valeur_p = "table__tbody__td-priority-F";
+            } else if (tache.priorite === "M") {
+                valeur_p = "table__tbody__td-priority-M";
+            } else if (tache.priorite === "H") {
+                valeur_p = "table__tbody__td-priority-H";
+            }
+
+            
+            tr.innerHTML = `
+                <td><p>${tache.id}</p></td>
+                <td class="${valeur_p}"><p>${tache.priorite}</p></td>
+                <td>${tache.nom}</td>
+                <td>${tache.dateEcheance}</td>
+                <td class="${tache.status ? 'table__tbody__td-status-completed' : 'table__tbody__td-status-pending'}">
+                    <p>${tache.status ? 'completed' : 'pending...'}</p>
+                </td>
+                <td class="table__tbody__td-actions">
+                    <ul>
+                        <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                        <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                    </ul>
+                </td>
+            `;
+            
+            tableau.appendChild(tr);
+        }
+    });
+}
 function ajout_tache(nom , dateEcheance, priorite){
     
 }
