@@ -1,0 +1,441 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root{
+    --blue_background : #e6f6ff;
+    --blue_button : #80d0ff;
+    --red_one : #C62828;
+    --powderRed: #FFCDD2;
+    --yellow_one : #fbbc05;
+    --powderYellow : #FFF394;
+    --blue_one : #4285f4;
+    --green_validate : #34a853;
+    --powderGreen : #cefad0;
+    --gray_pending : #949597;
+}
+
+header{
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+    background: var(--blue_one);
+    color: var(--blue_background);
+}
+header h1{
+    width: fit-content;
+    flex-grow: 1; 
+    text-align: center; 
+    margin: 0;
+}
+
+header h1:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.ListTache_Number{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    
+}
+
+.ListTache_Number li {
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.tache__haut{
+    background: var(--red_one);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tache__haut:hover{
+    transform: scale(1.2); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tache__moyen{
+    background: var(--yellow_one);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tache__moyen:hover{
+    transform: scale(1.2); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tache__faible{
+    background: var(--blue_button);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tache__faible:hover{
+    transform: scale(1.2); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle{
+    background-color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-toggle:hover{
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+}
+.tacheRetardAffichage{
+    display: flex;
+    background: var(--red_one);
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.main-index__left-menu__statistique{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1rem;
+}
+
+.main-index__left-menu__statistique li{
+    font-size: 14px;
+    background: var(--red_one);
+    font-weight: 400;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: white;
+}
+
+.main-index{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.main-index__left-menu{
+    background: var(--blue_background);
+    position: fixed; /* Utilise fixed pour que le menu soit positionné par rapport à la fenêtre */
+    left: -250px; 
+    top: 0; /* Colle le menu en haut de la fenêtre */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 2rem;
+    transition: left 0.3s ease; /* Transition douce sur la position */
+    z-index: 1000; /* Assure que le menu soit devant le contenu principal */
+    text-align: left;
+    height: 70%; 
+}
+
+.main-index__left-menu.open {
+    left: 0; /* Déplace le menu à sa position visible */
+}
+.main-index__left-menu__ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.main-index__left-menu__ul li {
+    display: flex;
+    width: 10rem;
+    gap: 1rem;
+    background-color: var(--blue_one);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--blue_background);
+    cursor: pointer;
+}
+
+.main-index__right-interface{
+    width: 100%;
+    padding: 1rem;
+}
+.main-index__right-interface__search-zone{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+.main-index__right-interface__search-zone__input{
+    border: solid 1px gainsboro;
+    padding: 1rem;
+    width: 25rem;
+    border-radius: 1rem ;
+}
+
+.main-index__right-interface__search-zone__input:focus{
+    outline: none;
+}
+
+.main-index__right-interface__search-zone__button{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--blue_one);
+}
+
+.main-index__right-interface__ajout-tache{
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.main-index__right-interface__ajout-tache__container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    
+}
+.main-index__right-interface__ajout-tache__title{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.main-index__right-interface__ajout-tache__container div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.main-index__right-interface__ajout-tache__container div p{
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.main-index__right-interface__ajout-tache__container div input,select{
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: solid 1px gainsboro;
+    outline: none;
+}
+
+.main-index__right-interface__ajout-tache__container button{
+    height: 2.5rem;
+    width: 5rem;
+    border: none;
+    background: var(--blue_one);
+    color: white;
+    border-radius: 1rem;
+    margin-top: 25px;
+}
+
+.main-index__right-interfac__filtre{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+
+.main-index__right-interfac__filtre__h3{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.main-index__right-interfac__filtre__ul{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.main-index__right-interfac__filtre__ul li button{
+    padding: 0.5rem;
+    width: fit-content;
+    border: solid 1px gainsboro;
+    background: none;
+    border-radius: 1rem;
+    color: var(--gray_pending);
+}
+
+.main-index__right-interfac__filtre__ul li button:hover{
+    background: var(--blue_one);
+    color: white;
+}
+
+.main-index__right-interfac__filtre__ul li input{
+    padding: 0.4rem;
+    border: none;
+    background: none;
+    border: solid 1px gainsboro;
+    border-radius: 1rem;
+    outline: none;
+}
+/* tableau */
+table{
+    width: 100%;
+
+}
+
+thead tr th{
+    text-align: left;
+    padding: 0.5rem;
+    color: white;
+    font-size: 14px;
+
+}
+
+thead{
+    background: var(--blue_one);
+    font-size: 14px;
+}
+
+tbody tr{
+    /* background: var(--blue_background); */
+    border-bottom: 100px solid var(--gray_pending);
+    font-size: 14px;
+}
+tbody tr td{
+    padding: 0.1rem;
+    /* border-bottom: 1px solid gainsboro; */
+    align-items: center;
+    text-align: left;
+}
+
+/*  */
+tbody tr td ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 2rem;
+    align-items: center;
+}
+
+tbody tr td ul li button{
+    background: none;
+    border: none;
+}
+
+.table__tbody__td-actions__li-delete{
+    border: 1px solid red;
+    color: red;
+    padding: 0.1rem 1.5rem;
+    border-radius: 1rem;
+    /* width: 50%; */
+}
+
+.table__tbody__td-actions__li-delete:hover{
+    background: red;
+    color: var(--blue_background);
+    cursor: pointer;
+}
+
+.table__tbody__td-actions__li-edit{
+    background: var(--blue_one);
+    color: var(--blue_background);
+    padding: 0.1rem 1.5rem;
+    border-radius: 1rem;
+    /* width: 50%; */
+
+}
+.table__tbody__td-status-pending p{
+    background: gainsboro;
+    text-align: center;
+    color: var(--gray_pending);
+    padding: 0.2rem;
+    border-radius: 1rem;
+}
+
+.table__tbody__td-status-completed p{
+    background: var(--powderGreen);
+    text-align: center;
+    color: var(--green_validate);
+    padding: 0.2rem;
+    border-radius: 1rem;
+}
+
+.table__tbody__td-status p:hover{
+    background: var(--green_validate);
+    content: "Valider la tache?";
+    color: white;
+}
+
+
+
+
+.table__tbody__td-priority{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+}
+.Priority{
+    width: 70px;
+}
+.Actions{
+    width: 13rem;
+}
+.deadline{
+    width: 15rem;
+}
+.Status{
+    width: 15rem;
+}
+.table__tbody__td-priority-F{
+    /* width: 0.1rem; */
+    height: 100%;
+    text-align: center;
+    background: var(--blue_background);
+    color: var(--blue_one);
+    /* padding: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.table__tbody__td-priority-M{
+    /* width: 100%; */
+    height: 100%;
+    text-align: center;
+    background: var(--powderYellow);
+    color: var(--yellow_one);
+    /* padding: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.table__tbody__td-priority-H{
+    /* width: 0.1rem; */
+    height: 100%;
+    text-align: center;
+    background: var(--powderRed);
+    color: var(--red_one);
+    /* padding: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 600;
+}
+

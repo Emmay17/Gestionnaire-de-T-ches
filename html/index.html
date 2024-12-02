@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GesTaches</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+
+        <button id="menu-toggle" class="menu-toggle">☰</button>
+        <h1>
+            GESTÂCHES
+        </h1>
+
+        <ul class="ListTache_Number" id="list_nombre_priorite">
+            
+        </ul>
+    </header>
+    <main class="main-index">
+        <section class="main-index__left-menu" id="left-menu">
+            <h2 class="main-index__left-menu__h2">
+                Menu
+            </h2>
+
+            <ul class="main-index__left-menu__ul">
+                <li ><img src="/assets/list_icon.svg" alt="icon tache"> <p>Mes Tâches</p></li>
+                <li id="toogle_ajoutTache"><img src="/assets/add.svg" alt="icon plus"> <p>Ajouter</p></li>
+                <li><img src="/assets/setting.svg" alt="icon paramettre"> <p>Parametres</p></li>
+            </ul>
+
+            <p>Statistique</p>
+            <ul class="main-index__left-menu__statistique">
+                <li id="affichage_tache_retard"> </li>
+                <li>Tâches en attente : </li>
+            </ul>
+
+            
+        </section>
+
+        <section class="main-index__right-interface">
+
+            <div class="main-index__right-interface__search-zone">
+                <input class="main-index__right-interface__search-zone__input" type="search" name="search" id="search-input" placeholder="Rechercher par nom de tache">
+                <button class="main-index__right-interface__search-zone__button"><img src="/assets/search.svg" alt="button search"></button>
+            </div>
+
+            <div class="main-index__right-interface__ajout-tache" id="ajoutSection">
+                    <p class="main-index__right-interface__ajout-tache__title">Ajout de tâche</p>
+                    
+                    <form id="ajout-formulaire">
+                        <div class="main-index__right-interface__ajout-tache__container">
+                            <div>
+                                <p>Nom</p>
+                                <input required type="text" id="nomDeTache" placeholder="Nom tâche">
+                            </div>
+    
+                            <div>
+                                <p>Date Echeance</p>
+                                <input required type="date" name="" id="dateInput">
+                            </div>
+    
+                            <div>
+                                <p>Priorité</p>
+                                <select name="" id="prioriteDeTache" required>
+                                    <option value="" disabled selected>Choisissez une option...</option>
+                                    <option value="faible">Faible</option>
+                                    <option value="moyen">Moyen</option>
+                                    <option value="haut">Haut</option>
+                                </select>
+                            </div>
+    
+                            <button type="submit"> Ajouter</button>
+                        </div>
+                    </form>
+            </div>
+
+            <!-- <div class="main-index__right-interfac__filtre">
+                <h3 class="main-index__right-interfac__filtre__h3">
+                    filtre
+                </h3>
+
+                <ul class="main-index__right-interfac__filtre__ul">
+                    <li><button type="button">Priority</button></li>
+                    <li><button type="button">Status</button></li>
+                    <li>
+                        <input type="date" name="Date"  id="">
+                    </li>
+                </ul>
+            </div> -->
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th class="Priority">
+                            <select name="" id="selectPriority">
+                                <!-- <option value="Priorite" selected>Priorite</option>
+                                <option value="F">Faible</option>
+                                <option value="M">Moyen</option>
+                                <option value="H">Haut</option> -->
+                            </select>
+                        </th>
+                        <th>Name</th>
+                        <th class="deadline">
+                            <select name="" id="selectDeadline">
+                            </select>
+                        </th>
+                        <th class="Status">
+                            <select name="" id="selectStatus">
+                                <!-- <option value="Status" selected>Status</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Pending">Pending</option> -->
+                            </select>
+                        </th>
+                        <th class="Actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_donne">
+                    
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="/javascript/script.js"></script>
+</body>
+</html>
