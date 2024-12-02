@@ -8,14 +8,16 @@ let taches = [
     {id: 7, nom: "Envoyer l'email important", dateEcheance: "26/11/2024", priorite: "H", status: false},
     {id: 8, nom: "Prendre un rendez-vous chez le coiffeur", dateEcheance: "29/11/2024", priorite: "F", status: false},
     {id: 9, nom: "Planifier les vacances", dateEcheance: "10/12/2024", priorite: "M", status: false},
-    {id: 10, nom: "Préparer le dîner", dateEcheance: "23/11/2024", priorite: "F", status: true},
-    {id: 11, nom: "Préparer le dîner", dateEcheance: "23/11/2025", priorite: "F", status: false}
+    {id: 10, nom: "Préparer le dîner", dateEcheance: "23/12/2024", priorite: "F", status: true},
+    {id: 11, nom: "Préparer ", dateEcheance: "23/11/2025", priorite: "F", status: false}
 ];
 
 let taches_retards = [];
 let tableau = document.getElementById("tbody_donne");
 
 let selectDate = document.getElementById("selectDeadline");
+
+let dateActuelle = new Date();
 
     let stat = document.getElementById("selectStatus");
     stat.addEventListener("change", function(state){
@@ -68,7 +70,7 @@ function afficher_taches(){
             } else if (tache.priorite == "H") {
                 valeur_p = "table__tbody__td-priority-H";
             }
-            
+            // affichageParDate(tache.dateEcheance);
             if (transformerStringEnDate(tache.dateEcheance) <= dateActuelle ){
                 console.log("retard =" + tache.id);
             }else{
@@ -82,8 +84,8 @@ function afficher_taches(){
                                     </td>
                                     <td class="table__tbody__td-actions">
                                         <ul>
-                                            <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
-                                            <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                                            <li data-id="${tache.id}" class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                                            <li data-id="${tache.id}" class="table__tbody__td-actions__li-edit"><p>edit</p></li>
                                         </ul>
                                     </td>
                                 </tr>`
@@ -124,8 +126,8 @@ function affichageParDate(date) {
                 </td>
                 <td class="table__tbody__td-actions">
                     <ul>
-                        <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
-                        <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                        <li data-id="${tache.id}" class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                        <li data-id="${tache.id}" class="table__tbody__td-actions__li-edit"><p>edit</p></li>
                     </ul>
                 </td>
             `;
@@ -168,8 +170,8 @@ function affichageParStatus(status){
                 </td>
                 <td class="table__tbody__td-actions">
                     <ul>
-                        <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
-                        <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                        <li data-id="${tache.id}" class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                        <li data-id="${tache.id}" class="table__tbody__td-actions__li-edit"><p>edit</p></li>
                     </ul>
                 </td>
             `;
@@ -209,8 +211,8 @@ function affichageParPorprite(priority){
                 </td>
                 <td class="table__tbody__td-actions">
                     <ul>
-                        <li class="table__tbody__td-actions__li-delete"><p>delete</p></li>
-                        <li class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                        <li data-id="${tache.id}" class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                        <li data-id="${tache.id}" class="table__tbody__td-actions__li-edit"><p>edit</p></li>
                     </ul>
                 </td>
             `;
@@ -276,54 +278,45 @@ function ajout_tache(){
         taches.push(nouvelleTache);
 
         formulaire_ajout.reset();
+        // nombreDeTachesParPriorite()
 
         afficher_taches();
+nombreDeTachesParPriorite();
+
     })
 }
 function definirDateMin() {
             const inputDate = document.getElementById('dateInput');
-            
             // Obtenir la date actuelle
             const today = new Date();
-            
             // Formater la date au format 'YYYY-MM-DD'
             const yyyy = today.getFullYear();
             const mm = String(today.getMonth() + 1).padStart(2, '0'); // Mois (0-11, donc on ajoute 1)
             const dd = String(today.getDate()).padStart(2, '0'); // Jour du mois
 
             const todayString = `${yyyy}-${mm}-${dd}`; // Exemple : "2024-12-01"
-            
             // Définir la date minimale dans l'input
             inputDate.setAttribute('min', todayString);
 }
 
-
 // pour le menu 
 // Sélectionner les éléments
-const menuToggle = document.getElementById('menu-toggle'); // Bouton de menu
-const leftMenu = document.getElementById('left-menu'); // Menu à ouvrir/fermer
-const rightInterface = document.querySelector('.main-index__right-interface'); // Section droite
+const menuToggle = document.getElementById('menu-toggle'); 
+const leftMenu = document.getElementById('left-menu'); 
+const rightInterface = document.querySelector('.main-index__right-interface'); 
 
-// Ajouter un écouteur d'événement au bouton pour ouvrir/fermer le menu
 menuToggle.addEventListener('click', function(e) {
-    // Empêcher la propagation du clic au document
     e.stopPropagation();
     
-    // Ajouter ou supprimer la classe 'open' pour faire apparaître ou disparaître le menu
     leftMenu.classList.toggle('open');
 });
 
-// Ajouter un écouteur d'événement au document pour fermer le menu si on clique en dehors
 document.addEventListener('click', function(e) {
-    // Vérifier si le clic a été effectué à l'extérieur du menu
     if (!leftMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-        // Fermer le menu en supprimant la classe 'open'
         leftMenu.classList.remove('open');
-        rightInterface.classList.remove('shifted'); // Facultatif si tu veux aussi déplacer la section droite
+        rightInterface.classList.remove('shifted'); 
     }
 });
-
-// Empêcher la fermeture du menu si le clic est effectué à l'intérieur du menu
 leftMenu.addEventListener('click', function(e) {
     e.stopPropagation();
 });
@@ -332,8 +325,109 @@ let affichage_tache_retard = document.getElementById("affichage_tache_retard");
 
 affichage_tache_retard.innerText = "Tâches en retard : "+nombreDeTachesEnRetard()+"";
 
-        // Appeler la fonction pour initialiser la date minimale
-        definirDateMin();
+let toggleAjout = document.getElementById("toogle_ajoutTache");
+
+toggleAjout.addEventListener("click", function(){
+    const left_menu = document.getElementById("ajoutSection");
+
+    left_menu.style.display = "flex";
+});
+
+let affichage_nombreParPriorite = document.getElementById("ListTache_Number");
+
+let nombre_haut = 0;
+let nombre_faible = 0;
+let nombre_moyen = 0;
+
+function nombreDeTachesParPriorite(){
+    nombre_faible = 0;
+    nombre_haut = 0;
+    nombre_moyen = 0;
+    taches.forEach((tache) =>{
+
+        if(tache.priorite === "M"){
+            nombre_moyen += 1;
+        }else if(tache.priorite === "H"){
+            nombre_haut += 1;
+        }else if(tache.priorite === "F"){
+            nombre_faible += 1;
+        }
+    })
+    console.log("nombre faible :"+nombre_faible);
+    console.log("nombre moyen :"+nombre_moyen);
+    console.log("nombre haut :"+nombre_haut);
+    const listeNombre = document.getElementById("list_nombre_priorite");
+
+listeNombre.innerHTML=`
+            <li data-id="H" id="bth" class="tache__haut btntach ">${nombre_haut}</li>
+            <li data-id="M" id="btm" class="tache__moyen  btntach">${nombre_moyen}</li>
+            <li data-id="F" id="btf" class="tache__faible btntach ">${nombre_faible}</li>
+`;
+
+}
+
+function filtreTacheParPrioriter(prio){
+    tableau.innerHTML = ``;
+
+    taches.forEach((tache) =>{
+        if(prio === tache.priorite){
+                let tr = document.createElement("tr");
+                let valeur_p = "";
+                if (tache.priorite == "F") {
+                    valeur_p = "table__tbody__td-priority-F";
+                } else if (tache.priorite == "M") {
+                    valeur_p = "table__tbody__td-priority-M";
+                } else if (tache.priorite == "H") {
+                    valeur_p = "table__tbody__td-priority-H";
+                }
+                // affichageParDate(tache.dateEcheance);
+                // if (transformerStringEnDate(tache.dateEcheance) <= dateActuelle ){
+                //     console.log("retard =" + tache.id);
+                // }else{
+                    tr.innerHTML = `<tr data-id="${tache.id}">
+                                        <td><p>${tache.id}</p></td>
+                                        <td class="${valeur_p}"><p>${tache.priorite}</p></td>
+                                        <td>${tache.nom}</td>
+                                        <td>${tache.dateEcheance}</td>
+                                        <td class="${tache.status ? 'table__tbody__td-status-completed' : 'table__tbody__td-status-pending'}">
+                                            <p>${tache.status ? 'completed' : 'pending...'}</p>
+                                        </td>
+                                        <td class="table__tbody__td-actions">
+                                            <ul>
+                                                <li data-id="${tache.id}" class="table__tbody__td-actions__li-delete"><p>delete</p></li>
+                                                <li data-id="${tache.id}" class="table__tbody__td-actions__li-edit"><p>edit</p></li>
+                                            </ul>
+                                        </td>
+                                    </tr>`
+                    // }
+                // }else{
+            tableau.appendChild(tr);
+        }
+    })
+}
+
+nombreDeTachesParPriorite();
+
+let buttonPriorite = document.getElementsByClassName("btntach");
+console.log({buttonPriorite});
+
+// buttonPriorite.map((currentElement) => {currentElement.addEventListener("click", function() {
+//     let valeur = currentElement.getAttribute("data-id");
+//     console.log({valeur});
+//     filtreTacheParPrioriter(valeur);
+// });})
+
+for (let index = 0; index < buttonPriorite.length; index++) {
+    const element = buttonPriorite[index];
+    element.addEventListener("click", function() {
+        let valeur = element.getAttribute("data-id");
+        console.log({valeur});
+        filtreTacheParPrioriter(valeur);
+    });
+}
+
+
+definirDateMin();
 afficher_taches();
 nombreDeTachesEnRetard()
-ajout_tache()
+ajout_tache();

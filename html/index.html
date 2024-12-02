@@ -13,6 +13,10 @@
         <h1>
             GESTÂCHES
         </h1>
+
+        <ul class="ListTache_Number" id="list_nombre_priorite">
+            
+        </ul>
     </header>
     <main class="main-index">
         <section class="main-index__left-menu" id="left-menu">
@@ -21,8 +25,8 @@
             </h2>
 
             <ul class="main-index__left-menu__ul">
-                <li><img src="/assets/list_icon.svg" alt="icon tache"> <p>Mes Tâches</p></li>
-                <li><img src="/assets/add.svg" alt="icon plus"> <p>Ajouter</p></li>
+                <li ><img src="/assets/list_icon.svg" alt="icon tache"> <p>Mes Tâches</p></li>
+                <li id="toogle_ajoutTache"><img src="/assets/add.svg" alt="icon plus"> <p>Ajouter</p></li>
                 <li><img src="/assets/setting.svg" alt="icon paramettre"> <p>Parametres</p></li>
             </ul>
 
@@ -31,6 +35,8 @@
                 <li id="affichage_tache_retard"> </li>
                 <li>Tâches en attente : </li>
             </ul>
+
+            
         </section>
 
         <section class="main-index__right-interface">
@@ -40,7 +46,7 @@
                 <button class="main-index__right-interface__search-zone__button"><img src="/assets/search.svg" alt="button search"></button>
             </div>
 
-            <div class="main-index__right-interface__ajout-tache">
+            <div class="main-index__right-interface__ajout-tache" id="ajoutSection">
                     <p class="main-index__right-interface__ajout-tache__title">Ajout de tâche</p>
                     
                     <form id="ajout-formulaire">
